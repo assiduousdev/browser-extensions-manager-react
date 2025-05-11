@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useTheme } from "./contexts/themeContext"
+
 import Header from "./components/Header/Header"
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle"
 import ExtensionCard from "./components/ExtensionCard/ExtensionCard"
@@ -9,13 +11,19 @@ import Button from "./components/Button/Button"
 import SwitchToggle from "./components/SwitchToggle/SwitchToggle"
 
 function App() {
+  const { getTheme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme( getTheme() === "dark" ? "light" : "dark" );
+  }
+
   return (
     <>
       <div className="flow">
       
       <h1>Components</h1>
 
-      <ThemeToggle />
+      <ThemeToggle onClick={() => toggleTheme() } />
       
       <Header>
         <div>
@@ -23,7 +31,7 @@ function App() {
           <p className="fs-700 semibold">Extensions</p>
         </div>
 
-        <ThemeToggle />
+        <ThemeToggle onClick={() => toggleTheme() } />
       </Header>
 
         <div className="flex">

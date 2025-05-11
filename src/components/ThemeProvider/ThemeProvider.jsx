@@ -9,6 +9,7 @@ function ThemeProvider({ children }) {
   const getTheme = () => pageTheme;
 
   const setTheme = (theme) => {
+    console.log(theme);
     if (theme === "dark" || theme === "light") {
       setPageTheme(theme);
     }
@@ -17,6 +18,10 @@ function ThemeProvider({ children }) {
   useEffect(() => {
     document.firstElementChild.setAttribute(THEME_ATTR, pageTheme);
   }, [pageTheme]);
+
+  useEffect(() => {
+    document.firstElementChild.setAttribute(THEME_ATTR, "light");
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ getTheme, setTheme }}>

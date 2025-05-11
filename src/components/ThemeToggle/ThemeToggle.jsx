@@ -1,18 +1,22 @@
 import React from 'react'
 
+import { useTheme } from "../../contexts/themeContext";
+
 import "./ThemeToggle.css";
 
 function ThemeToggle({ onClick }) {
+  const { getTheme } = useTheme();
+
   return (
     <button
       role="switch"
       className="Toggle Toggle--theme" 
       type="button"
 
-      onChange={onClick}
+      onClick={onClick}
 
       aria-label="Set current theme to dark mode"
-      aria-checked="false"
+      aria-checked={ getTheme() === "dark" }
     >
       <svg id="light" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 22 22">
         <g clipPath="url(#a)">
