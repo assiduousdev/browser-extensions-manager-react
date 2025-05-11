@@ -4,8 +4,8 @@ import "./ExtensionCardHeader.css";
 
 function ExtensionCardHeader({ children }) {
   return (
-    <header class="ExtensionCard__Header">
-      { ...children }
+    <header className="ExtensionCard__Header">
+      { children }
     </header>
   )
 }

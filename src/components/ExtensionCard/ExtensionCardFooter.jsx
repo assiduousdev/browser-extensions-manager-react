@@ -5,7 +5,7 @@ import "./ExtensionCardFooter.css";
 function ExtensionCardFooter({ children }) {
   return (
     <footer className="ExtensionCard__Footer">
-      { ...children }
+      { children }
     </footer>
   )
 }

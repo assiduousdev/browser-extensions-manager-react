@@ -4,8 +4,8 @@ import "./Header.css";
 
 function Header({ children }) {
   return (
-    <header class="Header shadow-400">
-      {...children}
+    <header className="Header shadow-400">
+      { children }
     </header>
   )
 }

@@ -14,11 +14,13 @@ function App() {
       <div className="flow">
       
       <h1>Components</h1>
+
+      <ThemeToggle />
       
       <Header>
         <div>
           <img src="/logo.svg" alt="Extensions Manager Logo" />
-          <p class="fs-700 semibold">Extensions</p>
+          <p className="fs-700 semibold">Extensions</p>
         </div>
 
         <ThemeToggle />
@@ -41,7 +43,7 @@ function App() {
             <img src="/src/assets/images/logo-devlens.svg" alt="DevLens Logo" />
 
             <section>
-              <h3 id="DevLens" class="fs-500 medium">DevLens</h3>
+              <h3 id="DevLens" className="fs-500 medium">DevLens</h3>
           
               <p>Quickly inspect page layouts and visualize element boundaries.</p>
             </section>

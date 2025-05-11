@@ -10,8 +10,8 @@ const ButtonVariants = {
 
 function Button({ variant = "default", onClick, children }) {
   return (
-    <button class={ ButtonVariants[variant] ?? "default" } type="button" onClick={onClick}>
-      { ...children }
+    <button className={ ButtonVariants[variant] ?? "default" } type="button" onClick={onClick}>
+      { children }
     </button>
   )
 }
