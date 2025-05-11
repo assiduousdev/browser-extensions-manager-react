@@ -12,6 +12,8 @@ import ExtensionCardFooter from "./components/ExtensionCard/ExtensionCardFooter"
 import ExtensionCardHeader from "./components/ExtensionCard/ExtensionCardHeader"
 import ExtensionsFilter from "./components/ExtensionsFilter/ExtensionsFilter"
 
+import "./App.css";
+
 function App() {
   const { getTheme, setTheme } = useTheme();
   const [activeFilter, setActiveFilter] = useState("All");
@@ -28,26 +30,21 @@ function App() {
 
   return (
     <>
-      <div className="flow">
-      
-        <h1>Components</h1>
+      <Header>
+        <div>
+          <img src="/logo.svg" alt="Extensions Manager Logo" />
+          <p className="fs-700 semibold">Extensions</p>
+        </div>
 
         <ThemeToggle onClick={() => toggleTheme() } />
-        
-        <Header>
-          <div>
-            <img src="/logo.svg" alt="Extensions Manager Logo" />
-            <p className="fs-700 semibold">Extensions</p>
-          </div>
+      </Header>
 
-          <ThemeToggle onClick={() => toggleTheme() } />
-        </Header>
+      <main className="Extensions container">
+        <section className="Extensions__Filter">
+          <ExtensionsFilter activeFilter={activeFilter} onClick={ (f) => setActiveFilter(f) } />
+        </section>
 
-        <ExtensionsFilter activeFilter={activeFilter} onClick={ (f) => setActiveFilter(f) } />
-      </div>
-
-      <main>
-        <section className="flow">
+        <section className="Extensions__List">
           {
             extensions.length > 0 ?
 

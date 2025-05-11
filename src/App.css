@@ -11,8 +11,47 @@ body {
   margin-block: 3.2rem;
 }
 
-#extensions {
-  display: grid;
-  grid-template-columns: repeat( auto-fill, minmax(30rem, 1fr) );
-  gap: 1.2rem; 
+.Extensions {
+  margin-top: 6.4rem;
+
+  & .Extensions__Filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+  }
+
+  & .Extensions__List {
+    display: grid;
+    grid-template-columns: minmax(30rem, 1fr);
+    justify-items: center;
+    gap: 1.2rem; 
+  }
 }
+
+@media screen and (min-width: 31.25em) {
+  .Extensions {
+    & .Extensions__Filter {
+      justify-content: flex-end;
+    }
+  }
+}
+
+@media screen and (min-width: 50em) {
+  .Extensions {
+    & .Extensions__List {
+      grid-template-columns: repeat( 2, minmax(30rem, 1fr) );
+    }
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .Extensions {
+    & .Extensions__List {
+      grid-template-columns: repeat( auto-fill, minmax(30rem, 1fr) );
+    }
+  }
+}
+
+
+

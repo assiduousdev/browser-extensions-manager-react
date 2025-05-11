@@ -2,8 +2,6 @@ import React from 'react'
 
 import Button from "../Button/Button";
 
-import "./ExtensionsFilter.css";
-
 function ExtensionsFilter({ activeFilter, onClick }) {
 
   const filters = [
