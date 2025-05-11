@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import data from "/src/data.json";
 
@@ -18,6 +18,10 @@ function useExtensions(filter) {
   }
   const filteredExtensions = filterExtensions(filter);
 
+  const removeExtension = (id) => {
+    setExtensions((prev) => prev.filter((e) => e.id !== id));
+  }
+
   const toggleExtension = (id) => {
     const updatedData = extensions.map(e => {
       if (e.id === id) {
@@ -33,7 +37,7 @@ function useExtensions(filter) {
     setExtensions(updatedData);
   }
 
-  return [filteredExtensions, toggleExtension];
+  return [filteredExtensions, toggleExtension, removeExtension];
 }
 
 export default useExtensions

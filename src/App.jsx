@@ -20,7 +20,7 @@ function App() {
     The data comes from a static .json file
     I wrapped it inside a hook to see how it would be probably done if it was from a db call
   */
-  const [extensions, toggleExtension] = useExtensions(activeFilter);
+  const [extensions, toggleExtension, removeExtension] = useExtensions(activeFilter);
 
   const toggleTheme = () => {
     setTheme( getTheme() === "dark" ? "light" : "dark" );
@@ -64,7 +64,7 @@ function App() {
                 </ExtensionCardHeader>
 
                 <ExtensionCardFooter>
-                  <Button variant="primary">Remove</Button>
+                  <Button variant="primary" onClick={ () => removeExtension(e.id) }>Remove</Button>
 
                   <SwitchToggle 
                     id={e.name} 

@@ -36,6 +36,7 @@
 
   --btn-outline-focus: hsl(var(--clr-accent-100));
   --toggle-outline-focus: hsl(var(--clr-accent-100));
+  --article-outline-focus: hsl(var(--clr-accent-100));
 }
 
 html[data-theme="light"] {
