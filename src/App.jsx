@@ -9,9 +9,11 @@ import ExtensionCardFooter from "./components/ExtensionCard/ExtensionCardFooter"
 import ExtensionCardHeader from "./components/ExtensionCard/ExtensionCardHeader"
 import Button from "./components/Button/Button"
 import SwitchToggle from "./components/SwitchToggle/SwitchToggle"
+import useExtensions from "./hooks/useExtensions"
 
 function App() {
   const { getTheme, setTheme } = useTheme();
+  const extensions = useExtensions();
 
   const toggleTheme = () => {
     setTheme( getTheme() === "dark" ? "light" : "dark" );
@@ -45,25 +47,39 @@ function App() {
             Primary
           </Button>
         </div>
-
-        <ExtensionCard>
-          <ExtensionCardHeader>
-            <img src="/src/assets/images/logo-devlens.svg" alt="DevLens Logo" />
-
-            <section>
-              <h3 id="DevLens" className="fs-500 medium">DevLens</h3>
-          
-              <p>Quickly inspect page layouts and visualize element boundaries.</p>
-            </section>
-          </ExtensionCardHeader>
-
-          <ExtensionCardFooter>
-            <Button variant="primary">Remove</Button>
-
-            <SwitchToggle id={"devlens"} label={"Enable DevLens extension"} />
-          </ExtensionCardFooter>
-        </ExtensionCard>
       </div>
+
+      <main>
+        <section className="flow">
+          {
+            extensions.map(e => (
+              <ExtensionCard key={e.name}>
+                <ExtensionCardHeader>
+                  <img src={e.logo} alt={`${e.name} logo`} />
+
+                  <section>
+                    <h3 id={e.name} className="fs-500 medium">{e.name}</h3>
+                
+                    <p>{e.description}</p>
+                  </section>
+                </ExtensionCardHeader>
+
+                <ExtensionCardFooter>
+                  <Button variant="primary">Remove</Button>
+
+                  <SwitchToggle 
+                    id={e.name} 
+                    label={`Enable ${e.name} extension`}
+                     
+                    checked={e.isActive} 
+                    onChange={ () => console.log("changed") }
+                  />
+                </ExtensionCardFooter>
+              </ExtensionCard>
+            ))
+          }
+        </section>
+      </main>
     </>
   )
 }

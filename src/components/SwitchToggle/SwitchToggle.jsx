@@ -2,7 +2,7 @@ import React from 'react'
 
 import "./SwitchToggle.css";
 
-function SwitchToggle({ id, label, onChange }) {
+function SwitchToggle({ id, label, checked, onChange }) {
   return (
     <label htmlFor={id}>
       <span className="sr-only">{ label }</span>
@@ -12,6 +12,7 @@ function SwitchToggle({ id, label, onChange }) {
         className="Toggle Toggle--switch"
         
         onChange={onChange}
+        checked={checked}
 
         role="switch"
       />
