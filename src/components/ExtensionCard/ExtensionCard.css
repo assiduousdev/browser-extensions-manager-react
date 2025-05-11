@@ -1,0 +1,14 @@
+
+article.ExtensionCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 1.6rem;
+  min-height: 20rem;
+  max-width: 40rem;
+
+  border-radius: 0.54em;
+  border: 1px solid var(--article-border-color);
+  background-color: var(--article-bg);
+}

@@ -1,0 +1,45 @@
+
+.Toggle.Toggle--theme[type="button"][role="switch"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.4rem;
+
+  border-radius: 1.2rem;
+  
+  aspect-ratio: 1;
+  transition: background-color 200ms ease-in;
+}
+
+.Toggle.Toggle--theme[type="button"][role="switch"] {
+  background-color: var(--toggle-theme-bg);
+}
+
+.Toggle.Toggle--theme[type="button"][role="switch"]:hover {
+  background-color: var(--toggle-theme-bg-hover);
+}
+
+.Toggle.Toggle--theme[type="button"][role="switch"][aria-checked="false"] {
+  & #light {
+    display: none;
+  }
+
+  & #dark {
+    display: block;
+  }
+}
+
+.Toggle.Toggle--theme[type="button"][role="switch"][aria-checked="true"] {
+    & #light {
+    display: block;
+  }
+
+  & #dark {
+    display: none;
+  }
+}
+
+.Toggle[Toggle--type="button"][role="switch"]:focus {
+  outline: 2px solid var(--toggle-outline-focus);
+  outline-offset: 2px;
+}

@@ -1,0 +1,11 @@
+
+.ExtensionCard__Header {
+  display: flex;
+  align-items: start;
+  gap: 1.2rem; 
+  margin-bottom: 1.2rem;
+
+  & p {
+    color: var(--article-body-color);
+  }
+}
