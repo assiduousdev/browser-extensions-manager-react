@@ -18,9 +18,9 @@ function App() {
 
   /*
     The data comes from a static .json file
-    I wrapped it inside a hook to see how it would probably done if it was from a db call
+    I wrapped it inside a hook to see how it would be probably done if it was from a db call
   */
-  const extensions = useExtensions(activeFilter);
+  const [extensions, toggleExtension] = useExtensions(activeFilter);
 
   const toggleTheme = () => {
     setTheme( getTheme() === "dark" ? "light" : "dark" );
@@ -49,8 +49,10 @@ function App() {
       <main>
         <section className="flow">
           {
+            extensions.length > 0 ?
+
             extensions.map(e => (
-              <ExtensionCard key={e.name}>
+              <ExtensionCard key={e.id}>
                 <ExtensionCardHeader>
                   <img src={e.logo} alt={`${e.name} logo`} />
 
@@ -69,11 +71,13 @@ function App() {
                     label={`Enable ${e.name} extension`}
 
                     checked={e.isActive} 
-                    onChange={ () => console.log("changed") }
+                    onChange={ () => toggleExtension(e.id) }
                   />
                 </ExtensionCardFooter>
               </ExtensionCard>
-            ))
+            )) :
+
+            <p>Nothing in here.</p>
           }
         </section>
       </main>

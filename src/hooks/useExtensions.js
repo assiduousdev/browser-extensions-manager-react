@@ -6,17 +6,34 @@ import data from "/src/data.json";
 function useExtensions(filter) {
   const [extensions, setExtensions] = useState(data);
 
-  useEffect(() => {
+  
+  const filterExtensions = (filter) => {
     if (filter === "Active") {
-      setExtensions(data.filter(e => e.isActive));
+      return extensions.filter(e => e.isActive);
     } else if (filter === "Inactive") {
-      setExtensions(data.filter(e => !e.isActive));
+      return extensions.filter(e => !e.isActive);
     } else {
-      setExtensions(data);
+      return extensions;
     }
-  }, [filter])
+  }
+  const filteredExtensions = filterExtensions(filter);
 
-  return extensions;
+  const toggleExtension = (id) => {
+    const updatedData = extensions.map(e => {
+      if (e.id === id) {
+        return {
+          ...e,
+          isActive: !e.isActive, 
+        }
+      }
+
+      return e;
+    });
+
+    setExtensions(updatedData);
+  }
+
+  return [filteredExtensions, toggleExtension];
 }
 
 export default useExtensions
