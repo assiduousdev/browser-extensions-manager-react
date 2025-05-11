@@ -5,7 +5,7 @@ import "./Button.css";
 const ButtonVariants = {
   "default" : "Button shadow-400",
   "active" : "Button active shadow-400", 
-  "primary" : "Button button--primary shadow-400"
+  "primary" : "Button Button--primary shadow-400"
 }
 
 function Button({ variant = "default", onClick, children }) {

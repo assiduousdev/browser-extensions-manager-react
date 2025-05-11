@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useTheme } from "./contexts/themeContext"
+import useExtensions from "./hooks/useExtensions"
 
+import Button from "./components/Button/Button"
 import Header from "./components/Header/Header"
+import SwitchToggle from "./components/SwitchToggle/SwitchToggle"
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle"
 import ExtensionCard from "./components/ExtensionCard/ExtensionCard"
 import ExtensionCardFooter from "./components/ExtensionCard/ExtensionCardFooter"
 import ExtensionCardHeader from "./components/ExtensionCard/ExtensionCardHeader"
-import Button from "./components/Button/Button"
-import SwitchToggle from "./components/SwitchToggle/SwitchToggle"
-import useExtensions from "./hooks/useExtensions"
+import ExtensionsFilter from "./components/ExtensionsFilter/ExtensionsFilter"
 
 function App() {
   const { getTheme, setTheme } = useTheme();
-  const extensions = useExtensions();
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  /*
+    The data comes from a static .json file
+    I wrapped it inside a hook to see how it would probably done if it was from a db call
+  */
+  const extensions = useExtensions(activeFilter);
 
   const toggleTheme = () => {
     setTheme( getTheme() === "dark" ? "light" : "dark" );
@@ -23,30 +30,20 @@ function App() {
     <>
       <div className="flow">
       
-      <h1>Components</h1>
-
-      <ThemeToggle onClick={() => toggleTheme() } />
-      
-      <Header>
-        <div>
-          <img src="/logo.svg" alt="Extensions Manager Logo" />
-          <p className="fs-700 semibold">Extensions</p>
-        </div>
+        <h1>Components</h1>
 
         <ThemeToggle onClick={() => toggleTheme() } />
-      </Header>
+        
+        <Header>
+          <div>
+            <img src="/logo.svg" alt="Extensions Manager Logo" />
+            <p className="fs-700 semibold">Extensions</p>
+          </div>
 
-        <div className="flex">
-          <Button>
-            Default
-          </Button>
-          <Button variant="active">
-            Active
-          </Button>
-          <Button variant="primary">
-            Primary
-          </Button>
-        </div>
+          <ThemeToggle onClick={() => toggleTheme() } />
+        </Header>
+
+        <ExtensionsFilter activeFilter={activeFilter} onClick={ (f) => setActiveFilter(f) } />
       </div>
 
       <main>
@@ -70,7 +67,7 @@ function App() {
                   <SwitchToggle 
                     id={e.name} 
                     label={`Enable ${e.name} extension`}
-                     
+
                     checked={e.isActive} 
                     onChange={ () => console.log("changed") }
                   />
